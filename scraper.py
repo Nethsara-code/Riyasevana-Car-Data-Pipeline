@@ -128,10 +128,10 @@ for i, link in enumerate(all_links):
                     pass
 
         all_cars.append(data)
-        print(f"  ✓ {data.get('Title', '?')} | {data.get('Price', 'N/A')}")
+        print(f"   {data.get('Title', '?')} | {data.get('Price', 'N/A')}")
 
     except Exception as e:
-        print(f"  ✗ Failed: {e}")
+        print(f"   Failed: {e}")
         all_cars.append({"url": link, "error": str(e)})
 
     time.sleep(random.uniform(2, 4))
