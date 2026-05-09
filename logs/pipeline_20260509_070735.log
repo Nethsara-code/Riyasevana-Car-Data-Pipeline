@@ -1,0 +1,30 @@
+==================================================
+Pipeline started: 2026-05-09 07:07:35.444984
+==================================================
+
+[1] Loaded CSV: 44 rows
+  [SKIP] Row 1 — no price: Suzuki Alto 2010 Car (Used)
+  [SKIP] Row 8 — no price: Nissan March K11 2002 Car (Used)
+  [SKIP] Row 10 — no price: Toyota Vitz 2008 Car (Used)
+  [SKIP] Row 13 — no price: Honda Fit Gp1 2013 Car (Used)
+  [SKIP] Row 17 — no price: Perodua Axia G Grade 2016 Car (Used)
+  [SKIP] Row 18 — no price: None
+  [SKIP] Row 26 — no price: Suzuki Swift 2002 Car (Used)
+  [SKIP] Row 31 — no price: Toyota Vitz 2016 Car (Used)
+  [SKIP] Row 36 — no price: Nissan March K11 1 8 Turbo 2003 Car (Used)
+
+[2] Cleaning done:
+     Clean rows : 35
+     Skipped    : 9
+
+[3] Data summary:
+    Price   → min: Rs.1,350,000  max: Rs.21,800,000  avg: Rs.6,728,714
+    Year    → min: 1984  max: 2023
+    Mileage → min: 1 km  max: 272,000 km  avg: 110,220 km
+    Makes   → {'Toyota': 10, 'Nissan': 5, 'Suzuki': 5, 'Honda': 4, 'Micro': 2}
+
+ Clean CSV saved: data/riyasewana_cars_cleaned.csv (35 rows)
+
+[4] Saved to DB: 35 records → table 'cars_cleaned'
+
+ Pipeline complete! Log saved to: logs\pipeline_20260509_070735.log

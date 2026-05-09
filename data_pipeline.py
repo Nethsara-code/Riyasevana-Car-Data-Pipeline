@@ -12,6 +12,7 @@ CSV_FILE = "riyasewana_cars.csv"
 DB_FILE = "database.db"
 TABLE_NAME = "cars_cleaned"
 LOG_DIR = "logs"
+CLEAN_CSV = "D:\\On Going Project\\Riyasewana_scraper\\data\\riyasewana_cars_cleaned.csv"
 
 os.makedirs(LOG_DIR, exist_ok=True)
 log_path = os.path.join(LOG_DIR, f"pipeline_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
@@ -239,6 +240,27 @@ for row in cleaned_rows:
     ))
 
 conn.commit()
+
+# =====================
+# CLEAN CSV SAVE KARANNA
+# =====================
+
+CLEAN_CSV = "data/riyasewana_cars_cleaned.csv"
+
+if cleaned_rows:
+    fieldnames = ["url", "title", "price", "make", "model", "year", 
+                  "mileage_km", "gear", "fuel_type", "engine_cc", 
+                  "condition", "location", "ad_date", "scraped_at"]
+    
+    with open(CLEAN_CSV, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(cleaned_rows)
+    
+    log(f"\n Clean CSV saved: {CLEAN_CSV} ({len(cleaned_rows)} rows)")
+
+
+
 
 # Verify
 cursor.execute(f"SELECT COUNT(*) FROM {TABLE_NAME}")
