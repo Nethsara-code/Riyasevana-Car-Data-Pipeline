@@ -13,7 +13,7 @@ import random
 
 
 SEARCH_URL = "https://riyasewana.com/search/cars"   
-MAX_PAGES = 5                                        
+MAX_PAGES = 10                                        
 OUTPUT_FILE = "riyasewana_cars.csv"
 
 # BROWSER SETUP
