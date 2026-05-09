@@ -8,20 +8,19 @@ import csv
 import time
 import random
 
-# =====================
+
 # CONFIG
-# =====================
+
 
 SEARCH_URL = "https://riyasewana.com/search/cars"   
 MAX_PAGES = 5                                        
 OUTPUT_FILE = "riyasewana_cars.csv"
 
-# =====================
 # BROWSER SETUP
-# =====================
+
 
 options = Options()
-# options.add_argument("--headless")  # Browser window nattam uncomment karanna
+
 options.add_argument("--disable-blink-features=AutomationControlled")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
@@ -31,9 +30,9 @@ driver = webdriver.Chrome(options=options)
 driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 wait = WebDriverWait(driver, 15)
 
-# =====================
-# STEP 1: ALL LINKS COLLECT 
-# =====================
+
+#  ALL LINKS COLLECT 
+
 
 def get_links_from_page():
     soup = BeautifulSoup(driver.page_source, "html.parser")
@@ -86,9 +85,9 @@ for page_num in range(1, MAX_PAGES + 1):
 
 print(f"\nTotal links collected: {len(all_links)}")
 
-# =====================
-# STEP 2: EACH CAR SCRAPE KARANNA
-# =====================
+
+#  CAR SCRAPE 
+
 
 all_cars = []
 
@@ -139,9 +138,7 @@ for i, link in enumerate(all_links):
 
 driver.quit()
 
-# =====================
-# STEP 3: CSV EKATA SAVE KARANNA
-# =====================
+#  CSV FILE SAVE
 
 if all_cars:
     all_keys = []
@@ -155,6 +152,6 @@ if all_cars:
         writer.writeheader()
         writer.writerows(all_cars)
 
-    print(f"\n✅ Saved {len(all_cars)} cars to '{OUTPUT_FILE}'")
+    print(f"\n Saved {len(all_cars)} cars to '{OUTPUT_FILE}'")
 else:
-    print("\n⚠ No data scraped.")
+    print("\n No data scraped.")
