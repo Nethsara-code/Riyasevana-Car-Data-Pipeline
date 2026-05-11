@@ -2,6 +2,7 @@ import csv
 import sqlite3
 import re
 import os
+import time
 import requests 
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -24,6 +25,32 @@ SECTION.headers.update({
 
 
 # All Links Collect
+def get_all_links():
+
+    all_links = []
+
+    for page_num in range(1, MAX_PAGES + 1):
+
+        soup = get_page(page_num)
+
+        cards = soup.select("li.v-card")
+
+        if not cards:
+            break
+        for card in cards:
+
+            link_tag = card.select_one("div.v-card-title a")
+
+            if link_tag:
+                url = link_tag["href"]
+
+                all_links.append(url)
+
+            time.sleep(DELAY_SEC)
+
+        return all_links
+
+    
 #   next page link
 
 
