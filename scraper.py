@@ -31,7 +31,7 @@ SESSION.headers.update({
 
 
 def get_page(page_number):
-    """Page HTML ගෙනත් BeautifulSoup object return කරනවා."""
+    """Page HTML  BeautifulSoup object return """
     url = BASE_URL if page_number == 1 else f"{BASE_URL}/{page_number}"
     try:
         response = SESSION.get(url, timeout=15)
@@ -52,7 +52,7 @@ def get_all_car_links():
     """
     
 
-    HTML structure (inspect කරලා confirm කළා):
+    HTML structure (inspect confirm):
       <ul class="v-list">
         <li class="v-card promoted">
           <div class="v-card-body">
@@ -67,7 +67,7 @@ def get_all_car_links():
     all_links = []  #  list — links store 
 
     for page_num in range(1, MAX_PAGES + 1):
-        print(f"\n[Page {page_num}/{MAX_PAGES}] Links collect කරනවා...")
+        print(f"\n[Page {page_num}/{MAX_PAGES}] Links collecting...")
 
         # ── Step 1: Page HTML  ──────────────────────────────────
         soup = get_page(page_num)
@@ -82,7 +82,7 @@ def get_all_car_links():
 
         if not cards:
             # Cards  = last page 
-            print(f"  ⚠ Cards නෑ — last page reached at page {page_num}.")
+            print(f"  No Cards  — last page reached at page {page_num}.")
             break
 
         # ── Step 3: every card card link  ─────────────────────
@@ -137,7 +137,7 @@ def get_field(soup, label):
 
 
 def scrape_car(url):
-    """Car detail page ඉඳලා fields extract කරලා dict return කරනවා."""
+    """Car detail page fields extract  dict return ."""
     try:
         response = SESSION.get(url, timeout=15)
         response.raise_for_status()
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     car_links = get_all_car_links()
 
     if not car_links:
-        print("⚠ Links නෑ — selectors inspect කරලා fix කරන්න.")
+        print("Links  — selectors inspect .")
         exit()
 
     # 2. link  data scrape 
