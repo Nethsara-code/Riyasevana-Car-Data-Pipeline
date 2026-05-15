@@ -9,8 +9,8 @@ import re
 # ═══════════════════════════════════════════════════════
 
 BASE_URL   = "https://riyasewana.com/search/cars"
-MAX_PAGES  = 419         # riyasewana last page
-DELAY_SEC  = 2.5         # No server block 
+MAX_PAGES  = 419         
+DELAY_SEC  = 2.5         
 OUTPUT_CSV = "riyasewana_cars.csv"
 
 # ═══════════════════════════════════════════════════════
@@ -64,7 +64,7 @@ def get_all_car_links():
       </ul>
     """
 
-    all_links = []  #  list — links store 
+    all_links = []  
 
     for page_num in range(1, MAX_PAGES + 1):
         print(f"\n[Page {page_num}/{MAX_PAGES}] Links collecting...")
